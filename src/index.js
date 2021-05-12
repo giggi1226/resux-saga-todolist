@@ -1,17 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
+import { Button, TextField } from '@material-ui/core'
+import {action, store} from './sagas/main'
+import {Provider, useSelector} from 'react-redux'
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const TodoList = () => {
+  const repos = useSelector(state => state)
+  console.log(repos)
+  return (
+    <div>
+      <Button onClick={() => action('FETCH_REPOS')}>View Repos</Button>
+
+
+      
+    </div>
+  );
+}
+  
+
+// ========================================
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <TodoList />
+  </Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
