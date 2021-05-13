@@ -7,17 +7,16 @@ import './index.css';
 
 const TodoList = () => {
   const repos = useSelector(state => state)
-  console.log(repos)
+  const repos2 = repos.repos
+  let urls = repos2 ? repos2.map(repo => repo.html_url) : null
+
   return (
     <div>
       <Button onClick={() => action('FETCH_REPOS')}>View Repos</Button>
-
-
-      
+      {urls ? urls.map(url => <div>{url}</div>) : ''}
     </div>
   );
 }
-  
 
 // ========================================
 

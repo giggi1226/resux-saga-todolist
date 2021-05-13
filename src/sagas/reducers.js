@@ -1,8 +1,7 @@
-export default function counter(state = [], action) {
+export default function counter(state = {}, action) {
   switch (action.type) {
     case 'REPOS':
-      console.log(action)
-      return 
+      return {...state, repos: action.repos}
     default:
       return state
   }
